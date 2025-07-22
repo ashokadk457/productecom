@@ -1,0 +1,37 @@
+version: '3.9'
+
+services:
+  authapi:
+    build:
+      context: ./backend/TeleCure
+      dockerfile: TeleCure.AuthAPI/Dockerfile
+    ports:
+      - "5000:8080"
+    networks:
+      - telecure-net
+
+  productapi:
+    build:
+      context: ./backend/TeleCure
+      dockerfile: TeleCure.ProductAPI/Dockerfile
+    ports:
+      - "5001:8080"
+    networks:
+      - telecure-net
+
+  frontend:  # ✅ correct indentation here
+    build:
+      context: ./frontend/angular-weather-app
+      dockerfile: Dockerfile.dev
+    ports:
+      - "4300:4201"
+    volumes:
+      - ./frontend/angular-weather-app:/app
+      - /app/node_modules
+    command: npm run start
+    networks:
+      - telecure-net
+
+networks:
+  telecure-net:
+    driver: bridge

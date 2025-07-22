@@ -1,0 +1,6 @@
+@TeleCure.AuthAPI_HostAddress = http://localhost:5007
+
+GET {{TeleCure.AuthAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

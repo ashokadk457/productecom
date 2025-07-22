@@ -1,0 +1,16 @@
+FROM node:20
+
+WORKDIR /app
+
+# Install dependencies
+COPY package*.json ./
+RUN npm install
+
+# Copy source files
+COPY . .
+
+# Expose the default Angular dev server port
+EXPOSE 4201
+
+# Run the Angular app in dev mode
+CMD ["npm", "run", "start"]
