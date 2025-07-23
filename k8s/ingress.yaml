@@ -18,7 +18,6 @@ spec:
                 name: authapi
                 port:
                   number: 80
-
     - host: productapi.samplerestapi.com
       http:
         paths:
@@ -29,7 +28,6 @@ spec:
                 name: productapi
                 port:
                   number: 80
-
     - host: app.samplerestapi.com
       http:
         paths:
