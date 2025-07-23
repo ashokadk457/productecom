@@ -4,34 +4,36 @@ metadata:
   name: telecure-ingress
   namespace: telecure
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
   rules:
     - host: authapi.samplerestapi.com
       http:
         paths:
-          - path: /(.*)
+          - path: /
             pathType: Prefix
             backend:
               service:
                 name: authapi
                 port:
                   number: 80
+
     - host: productapi.samplerestapi.com
       http:
         paths:
-          - path: /(.*)
+          - path: /
             pathType: Prefix
             backend:
               service:
                 name: productapi
                 port:
                   number: 80
+
     - host: app.samplerestapi.com
       http:
         paths:
-          - path: /(.*)
+          - path: /
             pathType: Prefix
             backend:
               service:
