@@ -38,3 +38,8 @@ spec:
                 name: frontend
                 port:
                   number: 80
+  defaultBackend:
+    service:
+      name: frontend
+      port:
+        number: 80
