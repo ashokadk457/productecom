@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: authapi
+  namespace: telecure
 spec:
   replicas: 1
   selector:
@@ -12,6 +13,8 @@ spec:
       labels:
         app: authapi
     spec:
+      imagePullSecrets:
+        - name: ghcr-secret
       containers:
         - name: authapi
           image: ghcr.io/ashokadk457/authapi:latest
@@ -22,6 +25,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: authapi
+  namespace: telecure
 spec:
   selector:
     app: authapi
@@ -35,6 +39,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: productapi
+  namespace: telecure
 spec:
   replicas: 1
   selector:
@@ -45,6 +50,8 @@ spec:
       labels:
         app: productapi
     spec:
+      imagePullSecrets:
+        - name: ghcr-secret
       containers:
         - name: productapi
           image: ghcr.io/ashokadk457/productapi:latest
@@ -55,6 +62,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: productapi
+  namespace: telecure
 spec:
   selector:
     app: productapi
@@ -68,6 +76,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend
+  namespace: telecure
 spec:
   replicas: 1
   selector:
@@ -78,6 +87,8 @@ spec:
       labels:
         app: frontend
     spec:
+      imagePullSecrets:
+        - name: ghcr-secret
       containers:
         - name: frontend
           image: ghcr.io/ashokadk457/frontend:latest
@@ -88,6 +99,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: frontend
+  namespace: telecure
 spec:
   selector:
     app: frontend
